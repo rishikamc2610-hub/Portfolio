@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Rishika M C – Digital Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Newsreader:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+  --bg:#f3f7f6; --surface:#ffffff; --ink:#14283f; --muted:#4d6073;
+  --accent:#12857f; --accent-ink:#0b5c58; --line:#c9d8d6; --pcb:#12857f;
+  --hero-bg:#15345a; --hero-ink:#ffffff; --hero-muted:#b9cbe0;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0e1a29; --surface:#15263a; --ink:#e8f0f7; --muted:#9db1c4;
+    --accent:#3fc1b9; --accent-ink:#6fd8d1; --line:#26405a; --pcb:#3fc1b9;
+    --hero-bg:#0a1626; --hero-ink:#ffffff; --hero-muted:#9db1c4;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0e1a29; --surface:#15263a; --ink:#e8f0f7; --muted:#9db1c4;
+  --accent:#3fc1b9; --accent-ink:#6fd8d1; --line:#26405a; --pcb:#3fc1b9;
+  --hero-bg:#0a1626; --hero-ink:#ffffff; --hero-muted:#9db1c4;
+}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Space Grotesk",system-ui,sans-serif;line-height:1.6;font-size:17px}
+h1,h2,h3{font-family:"Newsreader",Georgia,serif;font-weight:600;line-height:1.15;margin:0}
+a{color:var(--accent-ink)}
+a:focus-visible,button:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+.wrap{max-width:1000px;margin:0 auto;padding:0 24px}
+
+/* hero: a circuit trace is the one memorable element */
+header.hero{background:var(--hero-bg);color:var(--hero-ink);position:relative;overflow:hidden;padding:72px 0 88px}
+.hero svg.trace{position:absolute;right:0;top:0;height:100%;width:min(55%,520px);opacity:.9;pointer-events:none}
+.hero .wrap{position:relative}
+.monogram{width:72px;height:72px;border:2px solid var(--pcb);display:grid;place-items:center;font-family:"Newsreader",serif;font-size:30px;margin-bottom:28px;color:#fff;border-radius:4px}
+.hero h1{font-size:clamp(40px,7vw,72px);letter-spacing:-.01em}
+.hero p.role{font-size:clamp(18px,2.4vw,22px);color:var(--hero-muted);margin:14px 0 0;max-width:34ch}
+.hero .meta{margin-top:28px;color:var(--hero-muted);font-size:15px}
+.hero .meta strong{color:#fff;font-weight:500}
+.hero .actions{margin-top:32px;display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:11px 20px;border-radius:4px;text-decoration:none;font-weight:500;font-size:16px;border:1.5px solid #fff;color:#fff}
+.btn.primary{background:#3fc1b9;border-color:#3fc1b9;color:#08213a}
+.btn:hover{filter:brightness(1.1)}
+
+nav{position:sticky;top:env(safe-area-inset-top,0px);background:var(--surface);border-bottom:1px solid var(--line);z-index:20}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--surface);z-index:21}
+nav .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:4px;padding-bottom:4px}
+nav a{white-space:nowrap;padding:10px 14px;text-decoration:none;color:var(--muted);font-size:15px;border-radius:4px}
+nav a:hover{color:var(--ink);background:var(--bg)}
+nav .theme{margin-left:auto;background:none;border:1px solid var(--line);color:var(--muted);border-radius:4px;padding:6px 12px;font:inherit;font-size:14px;cursor:pointer;white-space:nowrap}
+
+section{padding:64px 0 8px}
+section h2{font-size:clamp(28px,4vw,38px);margin-bottom:8px}
+section .lede{color:var(--muted);margin:0 0 28px;max-width:60ch}
+.rule{height:3px;width:48px;background:var(--accent);margin:0 0 24px}
+.grid{display:grid;gap:20px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.g3{grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.panel{background:var(--surface);border:1px solid var(--line);border-left:4px solid var(--accent);padding:22px 24px;border-radius:2px}
+.panel h3{font-size:22px;margin-bottom:10px}
+.panel p{margin:0 0 10px}
+.panel p:last-child{margin-bottom:0}
+.panel ul{margin:0;padding-left:20px}
+.panel li{margin:4px 0}
+dl{margin:0}
+dt{font-weight:700;font-size:15px;color:var(--accent-ink);margin-top:12px}
+dt:first-child{margin-top:0}
+dd{margin:2px 0 0}
+.badge{display:inline-block;font-size:14px;font-weight:500;padding:3px 10px;border-radius:99px;border:1.5px solid var(--accent);color:var(--accent-ink);margin-bottom:12px}
+.badge.wip{border-style:dashed}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.chips li{margin:0;padding:5px 12px;border:1px solid var(--line);border-radius:99px;background:var(--bg);font-size:15px}
+.stat{font-family:"Newsreader",serif;font-size:44px;color:var(--accent-ink);line-height:1}
+footer{margin-top:72px;padding:36px 0 48px;border-top:1px solid var(--line);color:var(--muted);font-size:15px}
+@media (max-width:560px){.hero svg.trace{opacity:.35;width:80%}.hero{padding:48px 0 56px}}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+.trace path{stroke-dasharray:900;stroke-dashoffset:900;animation:draw 2.4s ease-out .2s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){.trace path{animation:none;stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <svg class="trace" viewBox="0 0 400 400" preserveAspectRatio="xMaxYMid slice" fill="none" stroke="#3fc1b9" stroke-width="2" aria-hidden="true">
+    <path d="M400 60 H300 L270 90 V180 L240 210 H120"/>
+    <path d="M400 150 H350 L330 170 V260 L300 290 H200 L180 310 V400"/>
+    <path d="M400 250 H380 L360 270 V340 H260"/>
+    <path d="M400 330 H430"/>
+    <circle cx="120" cy="210" r="6" fill="#3fc1b9"/>
+    <circle cx="260" cy="340" r="6" fill="#3fc1b9"/>
+    <circle cx="180" cy="390" r="6" fill="#3fc1b9"/>
+  </svg>
+  <div class="wrap">
+    <div class="monogram" aria-hidden="true">RM</div>
+    <h1>Rishika M C</h1>
+    <p class="role">First-year engineering student and aspiring embedded systems engineer.</p>
+    <p class="meta"><strong>B.Tech Electronics &amp; Communication Engineering</strong><br>Lovely Professional University · Reg. no. 12611601</p>
+    <div class="actions">
+      <a class="btn primary" href="#projects">See my projects</a>
+      <a class="btn" href="https://www.linkedin.com/in/rishika-m-c-203812434" target="_blank" rel="noopener">LinkedIn profile</a>
+    </div>
+  </div>
+</header>
+
+<nav aria-label="Sections">
+  <div class="wrap">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#academics">Academics</a>
+    <a href="#projects">Projects</a>
+    <a href="#activities">Competitions</a>
+    <a href="#growth">Next steps</a>
+    <a href="#connect">Connect</a>
+    <button class="theme" id="themeBtn" type="button" aria-label="Switch between light and dark theme">Theme</button>
+  </div>
+</nav>
+
+<main class="wrap">
+  <section id="about">
+    <h2>About me</h2><div class="rule"></div>
+    <div class="grid g2">
+      <div class="panel">
+        <h3>Who I am</h3>
+        <p>I’m a first-year B.Tech Electronics and Communication Engineering student at Lovely Professional University. I’m interested in electronics, embedded systems, and the connection between hardware and software.</p>
+      </div>
+      <div class="panel">
+        <h3>Where I’m heading</h3>
+        <p>I want to build a strong foundation in electronics and programming, gain hands-on project experience, and develop reliable embedded solutions.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Strengths and skills</h2><div class="rule"></div>
+    <div class="grid g3">
+      <div class="panel"><h3>Technical interests</h3><ul class="chips"><li>Embedded systems</li><li>AI-based applications</li></ul></div>
+      <div class="panel"><h3>Currently learning</h3><ul class="chips"><li>Python fundamentals</li><li>Basic electronics</li><li>Microcontroller concepts</li></ul></div>
+      <div class="panel"><h3>Professional skills</h3><ul class="chips"><li>Research and teamwork</li><li>Problem-solving mindset</li><li>Willingness to learn</li></ul></div>
+    </div>
+  </section>
+
+  <section id="academics">
+    <h2>Academic profile</h2><div class="rule"></div>
+    <div class="grid g2">
+      <div class="panel">
+        <h3>Programme</h3>
+        <dl>
+          <dt>Degree</dt><dd>B.Tech, Electronics and Communication Engineering</dd>
+          <dt>University</dt><dd>Lovely Professional University</dd>
+          <dt>Current status</dt><dd>First year, first semester</dd>
+          <dt>Expected graduation</dt><dd>2030</dd>
+        </dl>
+      </div>
+      <div class="panel">
+        <h3>Class 12 result</h3>
+        <div class="stat">94%</div>
+        <p style="margin-top:10px">Kerala State Board, PCMB / Bio-Maths stream.</p>
+      </div>
+    </div>
+    <div class="panel" style="margin-top:20px">
+      <h3>Learning areas</h3>
+      <p><strong>Now:</strong> programming fundamentals and Python; mathematics and engineering physics; digital and analog electronics.</p>
+      <p><strong>Planned:</strong> microprocessors and microcontrollers; Embedded C, communication protocols and embedded platforms.</p>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2><div class="rule"></div>
+    <div class="grid g2">
+      <article class="panel">
+        <span class="badge">Completed</span>
+        <h3>Smart Desktop Cleaner</h3>
+        <dl>
+          <dt>Problem</dt><dd>Files become disorganised, making it hard to spot unnecessary, duplicate or poorly arranged ones.</dd>
+          <dt>My role</dt><dd>Individual project, built end to end.</dd>
+          <dt>Tools and skills</dt><dd>Python, file and folder handling, testing, debugging, problem-solving.</dd>
+          <dt>Outcome</dt><dd>A working desktop-cleaning utility, tested on a separate test folder, with file-analysis features.</dd>
+        </dl>
+      </article>
+      <article class="panel">
+        <span class="badge wip">In progress · design and simulation</span>
+        <h3>Smart Home Automation</h3>
+        <dl>
+          <dt>Goal</dt><dd>Explore intelligent appliance control, energy management and remote monitoring using IoT concepts.</dd>
+          <dt>My role</dt><dd>Group project member.</dd>
+          <dt>Tools and skills</dt><dd>IoT concepts, circuit planning, component selection, Tinkercad simulation.</dd>
+          <dt>Next</dt><dd>Complete simulation, then hardware testing.</dd>
+        </dl>
+      </article>
+    </div>
+  </section>
+
+  <section id="activities">
+    <h2>Competitions and certifications</h2><div class="rule"></div>
+    <div class="grid g2">
+      <article class="panel">
+        <h3>Smart India Hackathon: IP-SAKTI Sahayak</h3>
+        <p>A multilingual, source-cited AI assistant concept for intellectual-property and regulatory guidance related to Ayurveda.</p>
+        <dl>
+          <dt>My contribution</dt><dd>Research and preparation of presentation content for the team.</dd>
+          <dt>Skills shown</dt><dd>Research, teamwork, understanding a problem statement, communicating a proposed solution.</dd>
+          <dt>Result</dt><dd>Not selected for SIH. The experience was my first team pitch.</dd>
+        </dl>
+      </article>
+      <article class="panel">
+        <h3>GEAR UP Hackathon</h3>
+        <dl>
+          <dt>Issued by</dt><dd>LPU</dd>
+          <dt>Completed</dt><dd>September 2026</dd>
+          <dt>Certificate</dt><dd>Not issued yet; will be added once received.</dd>
+        </dl>
+      </article>
+    </div>
+  </section>
+
+  <section id="growth">
+    <h2>Next steps</h2><div class="rule"></div>
+    <p class="lede">I’m at the start of my degree, so these are the areas I plan to learn next.</p>
+    <div class="grid g2">
+      <div class="panel"><h3>Learning plan</h3><ul class="chips"><li>C programming</li><li>Embedded systems fundamentals</li><li>Arduino</li><li>Internet of Things</li></ul></div>
+      <div class="panel"><h3>Community and mentoring</h3><p>I’m looking to join a technical club, find a faculty mentor, and start conversations with people in industry and LPU alumni.</p></div>
+    </div>
+  </section>
+
+  <section id="connect">
+    <h2>Connect</h2><div class="rule"></div>
+    <div class="panel">
+      <p>I’d be glad to hear from students, mentors and engineers working in embedded systems.</p>
+      <p><a href="https://www.linkedin.com/in/rishika-m-c-203812434" target="_blank" rel="noopener">linkedin.com/in/rishika-m-c-203812434</a></p>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">Rishika M C · B.Tech ECE, Lovely Professional University · 12611601</div></footer>
+
+<script>
+(function(){
+  var btn=document.getElementById('themeBtn');
+  btn.addEventListener('click',function(){
+    var r=document.documentElement;
+    var dark=r.getAttribute('data-theme')?r.getAttribute('data-theme')==='dark':window.matchMedia('(prefers-color-scheme: dark)').matches;
+    r.setAttribute('data-theme',dark?'light':'dark');
+  });
+})();
+</script>
+</body>
+</html>
